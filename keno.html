@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>OASIS KENO</title>
+
+    <link rel="stylesheet" href="keno.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" defer></script>
+    <script src="keno.js" defer></script>
+</head>
+<body>
+    <div class="kentainer">
+
+        <div class="timer-screen" >
+            <div class="play-section">
+                <div class="play-header">
+                    <div class="draw-title">
+                        <img src="/images/title.png" alt="">
+                        <span class="draw-code"> 50325</span>
+                    </div>
+                    <div class="evens">
+                        HEADS
+                    </div>
+
+                </div>
+                <div class="play-balls">
+                    <div class="ball-options">1</div>
+                    <div class="ball-options">2</div>
+                    <div class="ball-options">3</div>
+                    <div class="ball-options">4</div>
+                    <div class="ball-options">5</div>
+                    <div class="ball-options">6</div>
+                    <div class="ball-options active-yellow">7</div>
+                    <div class="ball-options">8</div>
+                    <div class="ball-options">9</div>
+                    <div class="ball-options">10</div>
+                    <div class="ball-options active-yellow">11</div>
+                    <div class="ball-options">12</div>
+                    <div class="ball-options">13</div>
+                    <div class="ball-options active-yellow">14</div>
+                    <div class="ball-options">15</div>
+                    <div class="ball-options ">16</div>
+                    <div class="ball-options">17</div>
+                    <div class="ball-options active-yellow">18</div>
+                    <div class="ball-options">19</div>
+                    <div class="ball-options">20</div>
+                    <div class="ball-options">21</div>
+                    <div class="ball-options">22</div>
+                    <div class="ball-options">23</div>
+                    <div class="ball-options ">24</div>
+                    <div class="ball-options">25</div>
+                    <div class="ball-options">26</div>
+                    <div class="ball-options">27</div>
+                    <div class="ball-options">28</div>
+                    <div class="ball-options">29</div>
+                    <div class="ball-options">30</div>
+                    <div class="ball-options">31</div>
+                    <div class="ball-options">32</div>
+                    <div class="ball-options">33</div>
+                    <div class="ball-options">34</div>
+                    <div class="ball-options">35</div>
+                    <div class="ball-options">36</div>
+                    <div class="ball-options">37</div>
+                    <div class="ball-options">38</div>
+                    <div class="ball-options">39</div>
+                    <div class="ball-options">40</div>
+                    <div class="ball-options active-orange">41</div>
+                    <div class="ball-options">42</div>
+                    <div class="ball-options">43</div>
+                    <div class="ball-options">44</div>
+                    <div class="ball-options active-orange">45</div>
+                    <div class="ball-options">46</div>
+                    <div class="ball-options">47</div>
+                    <div class="ball-options active-orange">48</div>
+                    <div class="ball-options">49</div>
+                    <div class="ball-options">50</div>
+                    <div class="ball-options">51</div>
+                    <div class="ball-options">52</div>
+                    <div class="ball-options active-orange">53</div>
+                    <div class="ball-options">54</div>
+                    <div class="ball-options">55</div>
+                    <div class="ball-options">56</div>
+                    <div class="ball-options">57</div>
+                    <div class="ball-options">58</div>
+                    <div class="ball-options">59</div>
+                    <div class="ball-options">60</div>
+                    <div class="ball-options">61</div>
+                    <div class="ball-options">62</div>
+                    <div class="ball-options active-orange">63</div>
+                    <div class="ball-options">64</div>
+                    <div class="ball-options">65</div>
+                    <div class="ball-options">66</div>
+                    <div class="ball-options">67</div>
+                    <div class="ball-options">68</div>
+                    <div class="ball-options">69</div>
+                    <div class="ball-options">70</div>
+                    <div class="ball-options">71</div>
+                    <div class="ball-options">72</div>
+                    <div class="ball-options">73</div>
+                    <div class="ball-options">74</div>
+                    <div class="ball-options">75</div>
+                    <div class="ball-options">76</div>
+                    <div class="ball-options">77</div>
+                    <div class="ball-options">78</div>
+                    <div class="ball-options">79</div>
+                    <div class="ball-options">80</div>
+    
+    
+    
+                </div>
+                <div class="play-footer">
+                    <div class="draw-title2">
+                        <img src="/images/keno.png" alt="">
+                    </div>
+                    <div class="evens">
+                        EVENS
+                    </div>
+
+
+                </div>
+            </div>
+            
+          
+            <div class="instruct">
+                <div class="instruct-header">
+                    <img src="/images/title.png" alt="">
+                    <span class="draw-code"> 50327 </span>
+                </div>
+
+                <div class="instruct-timer">
+                    <span class="time-counter" id="timer-clock"> 00:00 </span>
+                    <span class="timer-labels" id="timers"> 
+                        <span> MIN </span>
+                        <span> SEC </span>
+                    </span>
+                </div>
+
+                <div class="instructions">
+        
+                    <table class="inst-table instruction-item">
+                        <tr>
+                          <th colspan="2" class="goodie"> pick 5</th>
+                        </tr>
+                        <tr>
+                          <th>HITS</th>
+                          <th>WIN</th>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>320</td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>10</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>3</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>2</td>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td>1</td>
+                        </tr>
+                    </table>
+                    <table class="inst-table instruction-item">
+                        <tr>
+                          <th colspan="2" class="goodie"> pick 3</th>
+                        </tr>
+                        <tr>
+                          <th>HITS</th>
+                          <th>WIN</th>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>23</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>322</td>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td>45</td>
+                        </tr>
+                    </table>
+                    <table class="inst-table instruction-item">
+                        <tr>
+                          <th colspan="2" class="goodie"> pick 4</th>
+                        </tr>
+                        <tr>
+                          <th>HITS</th>
+                          <th>WIN</th>
+                        </tr>
+                    
+                        <tr>
+                          <td>4</td>
+                          <td>010</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>120</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>002</td>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td>111</td>
+                        </tr>
+                    </table>
+                    <table class="inst-table instruction-item">
+                        <tr>
+                          <th colspan="2" class="goodie"> pick 5</th>
+                        </tr>
+                        <tr>
+                          <th>HITS</th>
+                          <th>WIN</th>
+                        </tr>
+                
+                        <tr>
+                          <td>3</td>
+                          <td>322</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>211</td>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td>100</td>
+                        </tr>
+                    </table>
+                    <table class="inst-table instruction-item">
+                        <tr>
+                          <th colspan="2" class="goodie"> pick 10</th>
+                        </tr>
+                        <tr>
+                          <th>HITS</th>
+                          <th>WIN</th>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>3</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>2</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>1</td>
+                          </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>320</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>3</td>
+                          </tr>
+                     
+                    </table>
+
+                    <div class="instruction-item inst-display liney"> Pick <span class="red-span" > 1 </span> to <span class="red-span"> 10 </span> <br> numbers <br> from <span class="red-span"> 80 </span> </div>
+                    <div class="instruction-item inst-display liney"> <span class="red-span"> 20 </span> Balls <br> drawn <br> from <span class="red-span"> 80 </span> </div>
+                    <div class="instruction-item inst-display eurostile"> Play <br> the  <span class="red-span" > pick 10 </span> Game. <br> Get <span class="red-span"> 10 </span> numbers <br> correct, and <br> win the <br> <span class="red-span"> pick 10 </span> Jackpot </div>
+                    <div class="instruction-item inst-display"><span class="red-span"> pick 3</span> <br> to <br> <span class="red-span">pick 10 </span> <br> <span class="eurostile"> games have </span> <br> <span class="yellow-span">MULTIPLE <br> PAY LEVELS </span> <br> <span class="eurostile"> on other spots. </span> </br> </div>  
+                </div>
+
+
+            </div>
+           
+        </div>
+
+        <div class="shuffle-screen hide-label" id="shuffle-display">
+          <div class="machine-body">
+            <img src="/images/keno-ball3.webp" alt="" class="glass-ball-top">
+           
+            <div class="shuffle-machine" id="lotto-machine">
+
+              <div class="glass-ball">
+               
+                <div class="shuffling-balls" id="old-div">
+                  
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+                 <div class="ball"></div>
+
+                 
+                </div>
+              </div>
+
+
+            </div>
+
+            
+
+          </div>
+            
+          
+        
+        </div>
+
+        <div class="selection-screen score-board-screen hide-label">
+          <div class="play-section">
+            <div class="play-header">
+                <div class="draw-title">
+                    <img src="/images/title.png" alt="">
+                    <span class="draw-code"> 50325</span>
+                </div>
+                <div class="heads-label hide-label">
+                    HEADS
+                </div>
+                <div class="evens-label">
+                  EVENS
+              </div>
+              <div class="tails-label hide-label">
+                TAILS
+            </div>
+
+            </div>
+            <div class="play-balls scoreboard-balls">
+
+
+                <div class="ball-options scoreboard-ball">1</div>
+                <div class="ball-options scoreboard-ball">2</div>
+                <div class="ball-options scoreboard-ball">3</div>
+                <div class="ball-options scoreboard-ball">4</div>
+                <div class="ball-options scoreboard-ball">5</div>
+                <div class="ball-options scoreboard-ball">6</div>
+                <div class="ball-options scoreboard-ball">7</div>
+                <div class="ball-options scoreboard-ball">8</div>
+                <div class="ball-options scoreboard-ball">9</div>
+                <div class="ball-options scoreboard-ball">10</div>
+                <div class="ball-options scoreboard-ball">11</div>
+                <div class="ball-options scoreboard-ball">12</div>
+                <div class="ball-options scoreboard-ball">13</div>
+                <div class="ball-options scoreboard-ball">14</div>
+                <div class="ball-options scoreboard-ball">15</div>
+                <div class="ball-options scoreboard-ball">16</div>
+                <div class="ball-options scoreboard-ball">17</div>
+                <div class="ball-options scoreboard-ball">18</div>
+                <div class="ball-options scoreboard-ball">19</div>
+                <div class="ball-options scoreboard-ball">20</div>
+                <div class="ball-options scoreboard-ball">21</div>
+                <div class="ball-options scoreboard-ball">22</div>
+                <div class="ball-options scoreboard-ball">23</div>
+                <div class="ball-options scoreboard-ball">24</div>
+                <div class="ball-options scoreboard-ball">25</div>
+                <div class="ball-options scoreboard-ball">26</div>
+                <div class="ball-options scoreboard-ball">27</div>
+                <div class="ball-options scoreboard-ball">28</div>
+                <div class="ball-options scoreboard-ball">29</div>
+                <div class="ball-options scoreboard-ball">30</div>
+                <div class="ball-options scoreboard-ball">31</div>
+                <div class="ball-options scoreboard-ball">32</div>
+                <div class="ball-options scoreboard-ball">33</div>
+                <div class="ball-options scoreboard-ball">34</div>
+                <div class="ball-options scoreboard-ball">35</div>
+                <div class="ball-options scoreboard-ball">36</div>
+                <div class="ball-options scoreboard-ball">37</div>
+                <div class="ball-options scoreboard-ball">38</div>
+                <div class="ball-options scoreboard-ball">39</div>
+                <div class="ball-options scoreboard-ball">40</div>
+                <div class="ball-options scoreboard-ball">41</div>
+                <div class="ball-options scoreboard-ball">42</div>
+                <div class="ball-options scoreboard-ball">43</div>
+                <div class="ball-options scoreboard-ball">44</div>
+                <div class="ball-options scoreboard-ball">45</div>
+                <div class="ball-options scoreboard-ball">46</div>
+                <div class="ball-options scoreboard-ball">47</div>
+                <div class="ball-options scoreboard-ball">48</div>
+                <div class="ball-options scoreboard-ball">49</div>
+                <div class="ball-options scoreboard-ball">50</div>
+                <div class="ball-options scoreboard-ball">51</div>
+                <div class="ball-options scoreboard-ball">52</div>
+                <div class="ball-options scoreboard-ball">53</div>
+                <div class="ball-options scoreboard-ball">54</div>
+                <div class="ball-options scoreboard-ball">55</div>
+                <div class="ball-options scoreboard-ball">56</div>
+                <div class="ball-options scoreboard-ball">57</div>
+                <div class="ball-options scoreboard-ball">58</div>
+                <div class="ball-options scoreboard-ball">59</div>
+                <div class="ball-options scoreboard-ball">60</div>
+                <div class="ball-options scoreboard-ball">61</div>
+                <div class="ball-options scoreboard-ball">62</div>
+                <div class="ball-options scoreboard-ball">63</div>
+                <div class="ball-options scoreboard-ball">64</div>
+                <div class="ball-options scoreboard-ball">65</div>
+                <div class="ball-options scoreboard-ball">66</div>
+                <div class="ball-options scoreboard-ball">67</div>
+                <div class="ball-options scoreboard-ball">68</div>
+                <div class="ball-options scoreboard-ball">69</div>
+                <div class="ball-options scoreboard-ball">70</div>
+                <div class="ball-options scoreboard-ball">71</div>
+                <div class="ball-options scoreboard-ball">72</div>
+                <div class="ball-options scoreboard-ball">73</div>
+                <div class="ball-options scoreboard-ball">74</div>
+                <div class="ball-options scoreboard-ball">75</div>
+                <div class="ball-options scoreboard-ball">76</div>
+                <div class="ball-options scoreboard-ball">77</div>
+                <div class="ball-options scoreboard-ball">78</div>
+                <div class="ball-options scoreboard-ball">79</div>
+                <div class="ball-options scoreboard-ball">80</div>
+                
+
+            </div>
+            <div class="play-footer">
+                <div class="draw-title2">
+                    <img src="/images/keno.png" alt="">
+                </div>
+                <div class="heads-label hide-label">
+                  HEADS
+              </div>
+              <div class="evens-label">
+                EVENS
+            </div>
+            <div class="tails-label hide-label">
+              TAILS
+          </div>
+
+
+            </div>
+        </div>
+        
+
+        </div>
+
+        <div class="history-screen hide-label">
+
+        </div>
+        
+    </div>
+    <audio id="sound">
+        <source src="sounds/PoolHitBallPocket PE982308.mp3" type="audio/mp3">
+      </audio>
+</body>
+</html>
