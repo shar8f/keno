@@ -11,17 +11,17 @@
 
   @font-face {
     font-family: eurostile-bold;
-    src: url(/fonts/EUROSTIB.ttf);
+    src: url(fonts/EUROSTIB.ttf);
   }
 
   @font-face {
     font-family: eurostile-black;
-    src: url(/fonts/EUROSTIB.ttf);
+    src: url(fonts/EUROSTIB.ttf);
   }
 
   @font-face {
     font-family: goodtimes;
-    src: url(/fonts/good\ times\ rg.ttf);
+    src: url(sfonts/good\ times\ rg.ttf);
   }
 
   /* ===================== Play Screen =================== */
