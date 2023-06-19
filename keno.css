@@ -87,17 +87,17 @@ span.draw-code {
 
 
 .evens-label {
-    background-image: url(/images/events.png);
+    background-image: url(images/events.png);
 
 }
 
 .heads-label {
-    background-image: url(/images/yellow.png);
+    background-image: url(images/yellow.png);
 
 }
 
 .tails-label {
-    background-image: url(/images/orange.png);
+    background-image: url(images/orange.png);
 
 }
 
@@ -165,7 +165,7 @@ span.draw-code {
     background: black;
     height: 100vh;
     width: 40vw;
-    /* background-image: url(/images/timer-bg.png);
+    /* background-image: url(images/timer-bg.png);
     background-size: cover;
     background: rgb(23,1,1); */
     background: linear-gradient(0deg, rgba(23,1,1,1) 1%, rgba(121,7,7,1) 100%);
@@ -182,7 +182,7 @@ span.draw-code {
     justify-content: center;
     padding: 20px 20px;
     align-items: center;
-    /* background-image: url(/images/timer-head.png);
+    /* background-image: url(images/timer-head.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 100% 100%; */
@@ -210,7 +210,7 @@ span.time-counter {
     display: block;
     /* padding: 5vh; */
     font-weight: bold;
-    background-image: url(/images/counter.png); 
+    background-image: url(images/counter.png); 
     -webkit-background-clip: text; 
     -moz-background-clip: text;
     background-clip: text;
@@ -408,7 +408,7 @@ table.inst-table {
   
   .ball:nth-last-child(-n+40) {
     background-color: orange;
-    /* background-image: url(/images/orange.png);
+    /* background-image: url(images/orange.png);
     background-size: cover;
     background-repeat: no-repeat; */
 }
@@ -496,7 +496,7 @@ img.keno-selection-top {
 
 
 .shuffle-screen {
-    background-image: url(/images/keno-bg.jpg);
+    background-image: url(images/keno-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
