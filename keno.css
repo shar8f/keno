@@ -126,7 +126,7 @@ span.draw-code {
     font-size: calc(2vw + 2vh);
     width: 9.5%;
     height: 11.4%;
-    background-image: url(/images/inactive.png);
+    background-image: url(images/inactive.png);
     background-size: cover;
     background-repeat: no-repeat;
 
