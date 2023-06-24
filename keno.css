@@ -500,9 +500,23 @@ img#balls-out, #balls-out-B {
     max-height: 100vh;
     min-height: 116vh;
     right: -0.5vw;
-    max-width: 90%;
+    width: 38vw;
 }
 
+#balls-out {
+    z-index: 10;
+}
+
+.popupBall {
+    position: fixed;
+    width: 13vw;
+    height: 13vw;
+    right: 12vw;
+    bottom: -35vh;
+    background: var(--act-ball-yellow);
+    border-radius: 50%;
+    z-index: 5;
+}
 /* ============================================================= SHUFFLE SCREEN ======================================== */
 
 

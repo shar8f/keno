@@ -52,12 +52,7 @@ const shuffleLine = gsap.timeline({delay: shuffleWait, paused: true})
   
 
 
-// =========================== SELECTION TIMELINE =========================
 
-const selectLine = gsap.timeline({delay: 0, paused: false})
-    .from(".scoreboard-ball", {opacity: 0}, 3);
-
-console.log("selection balls loaded");
 
 
 
@@ -105,6 +100,60 @@ balls.forEach((ball, index) => {
   console.log("ball numbered");
 })
 
+
+// =========================== SELECTION TIMELINE =========================
+
+// const selectLine = gsap.timeline({delay: 0, paused: false})
+//     .from(".scoreboard-ball", {opacity: 0}, 1)
+//     .to(".popupBall", {delay: 4, x: 0, y: '-=35vh', scale: 2.2, duration: 1, ease: 'bounce'})
+//     .to(".popupBall", {delay: 4, x: 0, y: '-=75vh', scale: 1, duration: 1, ease: 'ease.inOut'});
+
+// console.log("selection balls loaded");
+
+balls.forEach((ball, index) => {
+  // Calculate the target positions
+  const startPosition = index + 440;
+  const middlePosition = 250;
+  const endPosition = 150;
+
+  const tl = gsap.timeline();
+  // Add animations to the timeline
+  tl.delay(1 + index*5)
+  
+  tl.to(ball, {
+      delay: 1,
+      x: 0,
+      y: '-65vh',
+      duration: 0.1,
+      onComplete: function() {
+      updateScoreboard(ball);
+      playSound();
+      
+      }
+  })
+      .to(ball, {
+      scale: 2.3,
+      duration: 0.01,
+      ease: 'bounce',
+      rotation: gsap.utils.random(0, 360)
+      
+      
+      })
+
+      .to(ball, {
+          delay: 2.5,
+          scale: 1,
+          duration: 0.5
+          
+      })
+
+      .to(ball, {
+      x: 0,
+      y: '-150vh',
+      duration: 0.5
+      });
+
+  });
 
 
 
