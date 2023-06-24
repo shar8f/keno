@@ -11,7 +11,7 @@
 
   @font-face {
     font-family: eurostile-bold;
-    src: url(/fonts/EUROSTIB.ttf);
+    src: url(fonts/EUROSTIB.ttf);
   }
 
   @font-face {
@@ -161,7 +161,7 @@ span.draw-code {
     background: black;
     height: 100vh;
     width: 40vw;
-    /* background-image: url(/images/timer-bg.png);
+    /* background-image: url(images/timer-bg.png);
     background-size: cover;
     background: rgb(23,1,1); */
     background: linear-gradient(0deg, rgba(23,1,1,1) 1%, rgba(121,7,7,1) 100%);
@@ -408,7 +408,7 @@ table.inst-table {
   
   .ball:nth-last-child(-n+40) {
     background-color: orange;
-    /* background-image: url(/images/orange.png);
+    /* background-image: url(images/orange.png);
     background-size: cover;
     background-repeat: no-repeat; */
 }
@@ -509,7 +509,7 @@ img#balls-out, #balls-out-B {
 
 
 .shuffle-screen {
-    background-image: url(/images/keno-bg.jpg);
+    background-image: url(images/keno-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
