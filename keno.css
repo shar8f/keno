@@ -16,12 +16,12 @@
 
   @font-face {
     font-family: eurostile-black;
-    src: url(/fonts/EUROSTIB.ttf);
+    src: url(fonts/EUROSTIB.ttf);
   }
 
   @font-face {
     font-family: goodtimes;
-    src: url(/fonts/good\ times\ rg.ttf);
+    src: url(fonts/good\ times\ rg.ttf);
   }
 
   /* ===================== Play Screen =================== */
@@ -83,17 +83,17 @@ span.draw-code {
 
 
 .evens-label {
-    background-image: url(/images/events.png);
+    background-image: url(images/events.png);
 
 }
 
 .heads-label {
-    background-image: url(/images/yellow.png);
+    background-image: url(images/yellow.png);
 
 }
 
 .tails-label {
-    background-image: url(/images/orange.png);
+    background-image: url(images/orange.png);
 
 }
 
@@ -122,7 +122,7 @@ span.draw-code {
     font-size: calc(2vw + 2vh);
     width: 9.5%;
     height: 11.4%;
-    background-image: url(/images/inactive.png);
+    background-image: url(images/inactive.png);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -178,7 +178,7 @@ span.draw-code {
     justify-content: center;
     padding: 20px 20px;
     align-items: center;
-    /* background-image: url(/images/timer-head.png);
+    /* background-image: url(images/timer-head.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 100% 100%; */
@@ -206,7 +206,7 @@ span.time-counter {
     display: block;
     /* padding: 5vh; */
     font-weight: bold;
-    background-image: url(/images/counter.png); 
+    background-image: url(images/counter.png); 
     -webkit-background-clip: text; 
     -moz-background-clip: text;
     background-clip: text;
