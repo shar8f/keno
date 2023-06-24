@@ -1,7 +1,8 @@
 // ======================== GAME SETTINGS HERE ========================
 const betsTimer = 5 // SET THE BETS-CLOSED TIMER HERE - calculate in seconds, the time to wait before bets close.
 
-
+    //// Define  the lucky balls.
+    const luckyBalls = [15, 22, 2, 24, 12, 66, 77, 48, 33, 49, 50];
 
 
 
@@ -74,9 +75,35 @@ console.log("selection balls loaded");
 
   // ======================== FUNCTIONS AND JS BELOW ====================
   
-  // ============================================== Ball Shuffling
+  // ============================================== Ball Selection
+
+// create and select popup balls elements.
+for (let i = 0; i <= 80; i++ ){
+  const ballContainer = document.getElementById ("popupBalls");
+  const ball = document.createElement('span');
+  ball.className = 'popupBall';
+  ballContainer.appendChild(ball);
+}
 
 
+// get the popupballs and save in balls list.
+const ballElements = document.getElementsByClassName('popupBall');
+const balls = Array.from(ballElements);
+
+//Mark each ball with a number attribute.
+balls.forEach((ball, index) => {
+  const number = (index + 1).toString().padStart(1, '0');
+  ball.setAttribute('data-number', number);
+
+  // assign texture to each ball according to ball number.
+  const ballBgUrl = `images/balls/ball-${index+1}.png`; // set variable for each ball imag.
+  ball.style.backgroundImage = `url('${ballBgUrl}')`; 
+  ball.style.backgroundSize = "cover";
+  ball.style.backgroundPosition = "center";
+  ball.style.backgroundRepeat = "no-repeat";
+
+  console.log("ball numbered");
+})
 
 
 
