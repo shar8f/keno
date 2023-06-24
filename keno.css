@@ -28,11 +28,7 @@
   .play-section {
     width: 60vw;
     padding: 15px;
-    background: rgb(88,7,7);
-    background: linear-gradient(132deg, rgba(88,7,7,1) 0%, rgba(254,0,0,1) 40%);
-    /* background: rgb(111,11,11);
-    background: linear-gradient(132deg, rgba(111,11,11,1) 0%, rgba(171,15,15,1) 48%, rgba(175,15,15,1) 49%, rgba(231,19,19,1) 100%); */
-}
+   }
 
 .timer-screen {
     display: flex;
@@ -116,7 +112,7 @@ span.draw-code {
     line-height: 9vh;
 }
 
-.ball-options {
+.ball-options, .scoreboard-ball {
     text-align: center;
     background: var(--in-ball);
     color: var(--in-ball-no);
@@ -492,8 +488,21 @@ img.keno-selection-top {
     z-index: 100;
     top: 0px;
     left: 0px;
+    background: rgb(88,7,7);
+    background: linear-gradient(132deg, rgba(88,7,7,1) 0%, rgba(254,0,0,1) 40%);
+    /* background: rgb(111,11,11);
+    background: linear-gradient(132deg, rgba(111,11,11,1) 0%, rgba(171,15,15,1) 48%, rgba(175,15,15,1) 49%, rgba(231,19,19,1) 100%); */
+
 }
 
+img#balls-out, #balls-out-B {
+    position: fixed;
+    top: -1vh;
+    max-height: 100vh;
+    min-height: 116vh;
+    right: -0.5vw;
+    max-width: 90%;
+}
 
 /* ============================================================= SHUFFLE SCREEN ======================================== */
 
