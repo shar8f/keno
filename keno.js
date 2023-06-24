@@ -51,6 +51,26 @@ const shuffleLine = gsap.timeline({delay: shuffleWait, paused: true})
   
 
 
+// =========================== SELECTION TIMELINE =========================
+
+const selectLine = gsap.timeline({delay: 0, paused: false})
+    .from(".scoreboard-ball", {opacity: 0}, 3);
+
+console.log("selection balls loaded");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ======================== FUNCTIONS AND JS BELOW ====================
   
