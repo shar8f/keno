@@ -478,7 +478,14 @@ img.keno-selection-top {
 
 }
 
-.selection-screen {
+.section-A {
+    background: rgb(88,7,7);
+    background: linear-gradient(132deg, rgba(88,7,7,1) 0%, rgba(254,0,0,1) 40%);
+    /* background: rgb(111,11,11);
+    background: linear-gradient(132deg, rgba(111,11,11,1) 0%, rgba(171,15,15,1) 48%, rgba(175,15,15,1) 49%, rgba(231,19,19,1) 100%); */
+}
+
+.selection-screen{
     overflow: hidden;
     /* background: #055ba6; */
     position: absolute;
