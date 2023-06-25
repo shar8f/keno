@@ -3,7 +3,7 @@ const betsTimer = 1; // Set the BETS-CLOSED timer here - calculate in seconds, t
 
 //// Define  the lucky balls.
 const luckyBalls = [
-  1, 2, 45, 66, 50, 3, 5, 8, 7
+  1, 2, 45, 66, 50, 3, 5, 8, 7, 12, 14, 15, 11, 80, 70, 60, 50, 40, 30, 71
 ];
 
 // Provide Draw ID.
@@ -82,7 +82,7 @@ const gameId = document.createElement("div");
 
 //create html for game id.
 const drawTitle = document.createElement("span");
-drawTitle.innerHTML = "DRAW";
+// drawTitle.innerHTML = "DRAW";
 gameId.innerHTML = drawId;
 gameId.classList.add("game-id");
 
@@ -93,7 +93,7 @@ historyRow.classList.add("history-set");
 history.appendChild(historyRow);
 
 
-historyRow.appendChild(drawTitle);
+// historyRow.appendChild(drawTitle);
 historyRow.appendChild(gameId);
 
 const sortedBalls = luckyBalls.sort((a, b) => a - b);
@@ -106,9 +106,9 @@ sortedBalls.forEach((ball, index) => {
   record.innerHTML = sortedBalls[index];
   historyRow.appendChild(record);
   if (luckyBalls[index] > 40){
-    record.classList.add("active-orange");
+    record.classList.add("orange-ball");
   } else{
-    record.classList.add("active-yellow");
+    record.classList.add("yellow-ball");
   }
 });
 
