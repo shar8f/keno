@@ -594,3 +594,24 @@ img.glass-ball-top {
     top: 0px;
     width: 4vh !important;
 } */
+
+
+/* ===================================== HISTORY =================== */
+
+
+.history-set {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    width: 90vh;
+    margin: auto;
+    /* border-top: 2px solid #e3dfdf; */
+    /* border-bottom: 2px solid #e5dfdf; */
+}
+
+div#history-table {
+    /* display: grid; */
+    /* flex-basis: auto; */
+    width: 100vh;
+    border-top: 2px solid #e3dfdf;
+    border-bottom: 2px solid #e5dfdf;
+}

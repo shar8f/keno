@@ -2,7 +2,13 @@
 const betsTimer = 1; // Set the BETS-CLOSED timer here - calculate in seconds, the time to wait before bets close.
 
 //// Define  the lucky balls.
-const luckyBalls = [15, 45, 16, 71, 12, 44, 23];
+const luckyBalls = [
+  1, 2, 45, 66, 50, 3, 5, 8, 7
+];
+
+// Provide Draw ID.
+
+var drawId = 52304;
 
 //========================= TIMER TIMELINE =============================
 const timerLine = gsap
@@ -31,24 +37,29 @@ const shuffleLine = gsap
     document.querySelector(".timer-screen").classList.add("hide-label");
     document.querySelector(".shuffle-screen").classList.remove("hide-label");
     gsap.set("#shuffVideo", {
-      transformOrigin: 'top left', // Set the transform origin to the top left corner
-      
-      });
+      transformOrigin: "top left", // Set the transform origin to the top left corner
+    });
 
     console.log("first duration is" + timerLine.duration());
     console.log(betsTimer);
   })
   .to("#shuffVideo", 0, { opacity: 1 })
-  .to("#shuffVideo", 0, { onComplete: playVideo, duration: 5})
-  .to("#shuffVideo", 1, {scale: 1.1}, 4.5 )
-  .to("--", {
-    // Delay the start of the tween by 5 seconds
-    onStart: () => {
-      document.querySelector(".shuffle-screen").classList.add("hide-label");
-      document.querySelector(".shuffle-screen").style.zIndex = "1000";
-      document.querySelector(".selection-screen").classList.remove("hide-label");
+  .to("#shuffVideo", 0, { onComplete: playVideo, duration: 5 })
+  .to("#shuffVideo", 1, { scale: 1.1 }, 4.5)
+  .to(
+    "--",
+    {
+      // Delay the start of the tween by 5 seconds
+      onStart: () => {
+        document.querySelector(".shuffle-screen").classList.add("hide-label");
+        document.querySelector(".shuffle-screen").style.zIndex = "1000";
+        document
+          .querySelector(".selection-screen")
+          .classList.remove("hide-label");
+      },
     },
-  } , "-=1");
+    "-=1"
+  );
 
 // Pause and play the video, and change the button text
 function playVideo() {
@@ -63,6 +74,43 @@ function playVideo() {
 }
 
 // ======================== FUNCTIONS AND JS BELOW ====================
+
+// ======================== HISTORY SCREEN ===========================
+
+const history = document.getElementById("history-table");
+const gameId = document.createElement("div");
+
+//create html for game id.
+const drawTitle = document.createElement("span");
+drawTitle.innerHTML = "DRAW";
+gameId.innerHTML = drawId;
+gameId.classList.add("game-id");
+
+//create a history row for current draw.
+const historyRow = document.createElement("div");
+historyRow.setAttribute("draw-number", drawId);
+historyRow.classList.add("history-set");
+history.appendChild(historyRow);
+
+
+historyRow.appendChild(drawTitle);
+historyRow.appendChild(gameId);
+
+const sortedBalls = luckyBalls.sort((a, b) => a - b);
+
+console.log(sortedBalls);
+
+sortedBalls.forEach((ball, index) => {
+  const record = document.createElement("div");
+  record.classList.add("record-number");
+  record.innerHTML = sortedBalls[index];
+  historyRow.appendChild(record);
+  if (luckyBalls[index] > 40){
+    record.classList.add("active-orange");
+  } else{
+    record.classList.add("active-yellow");
+  }
+});
 
 // ============================================== Ball Creation
 
@@ -133,64 +181,66 @@ function shuffleArray(array) {
 }
 
 // start the scoreboard animation on the shuffled popball array.
-const popLine = gsap.timeline() // the number in delay here is the pause between each ball's animation.
-gsap.from (".selection-screen", {
+const popLine = gsap.timeline(); // the number in delay here is the pause between each ball's animation.
+gsap.from(".selection-screen", {
   // scale: 1.2,
   duration: 2,
   x: "-=1vh",
-  y: "-=1vh"
+  y: "-=1vh",
 });
 
 shufflePopBalls.forEach((ball, index) => {
-
   popLine
 
-  .to(ball, {
-    delay: 1,
-    x: 0,
-    y: "-70vh",
-    duration: 0.1,
-  })
-  .to(ball, {
-    scale: 2,
-    duration: 0.01,
-    ease: "bounce",
-  
+    .to(ball, {
+      delay: 1,
+      x: 0,
+      y: "-70vh",
+      duration: 0.1,
+    })
+    .to(ball, {
+      scale: 2,
+      duration: 0.01,
+      ease: "bounce",
+    })
 
-  },)
+    .to(ball, {
+      rotation: gsap.utils.random(0, 360),
+      ease: "bounce",
+      onComplete: function () {
+        pushToBoard(ball);
+        playSound();
+      },
+    })
 
-  .to (ball, {
-    rotation: gsap.utils.random(0, 360),
-    ease:"bounce",
-    onComplete: function () {
-    pushToBoard(ball);
-    playSound();
-    }
-  })
+    .to(ball, {
+      delay: 2,
+      scale: 1,
+      duration: 0.2,
+    })
 
-  .to(ball, {
-    delay: 2,
-    scale: 1,
-    duration: 0.2,
-  })
-
-  .to(ball, {
-    x: 0,
-    y: "-150vh",
-    duration: 0.5,
-  }, "-=0.15")
+    .to(
+      ball,
+      {
+        x: 0,
+        y: "-150vh",
+        duration: 0.5,
+      },
+      "-=0.15"
+    );
 
   if (index === shufflePopBalls.length - 1) {
     popLine.to("--", {
-      delay: 5,  // time delay before displaying the history screen.
-      onComplete : function () {
-        
-          // load history screen.
-          document.querySelector(".selection-screen").classList.add("hide-label");
-          document.querySelector(".history-screen").classList.remove("hide-label");
-          console.log("now we are done. go to history");
-      }
-    })
+      delay: 5, // time delay before displaying the history screen.
+      onComplete: function () {
+        // load history screen.
+        document.querySelector(".selection-screen").classList.add("hide-label");
+        document
+          .querySelector(".history-screen")
+          .classList.remove("hide-label");
+        console.log("now we are done. go to history");
+      },
+    });
   }
 });
 
@@ -221,7 +271,6 @@ function pushToBoard(ball) {
     tails += 1;
   }
   gsap.from(scoreboardBall, { scale: 1.8, duration: 0.3, ease: "elastic" }); //animate the scores
-
 
   // Check the counts and show the corresponding labels
   if (heads > tails) {
