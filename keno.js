@@ -147,11 +147,11 @@ shufflePopBalls.forEach((ball, index) => {
   .to(ball, {
     delay: 1,
     x: 0,
-    y: "-65vh",
+    y: "-70vh",
     duration: 0.1,
   })
   .to(ball, {
-    scale: 2.3,
+    scale: 2,
     duration: 0.01,
     ease: "bounce",
   
