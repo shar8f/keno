@@ -2,7 +2,7 @@
 const betsTimer = 1; // Set the BETS-CLOSED timer here - calculate in seconds, the time to wait before bets close.
 
 //// Define  the lucky balls.
-const luckyBalls = [15, 22, 42, 78, 69,1, 63, 72, 14, 15, 16];
+const luckyBalls = [15, 45, 16, 71, 12, 44, 23];
 
 //========================= TIMER TIMELINE =============================
 const timerLine = gsap
@@ -142,6 +142,7 @@ gsap.from (".selection-screen", {
 });
 
 shufflePopBalls.forEach((ball, index) => {
+
   popLine
 
   .to(ball, {
@@ -178,6 +179,19 @@ shufflePopBalls.forEach((ball, index) => {
     y: "-150vh",
     duration: 0.5,
   }, "-=0.15")
+
+  if (index === shufflePopBalls.length - 1) {
+    popLine.to("--", {
+      delay: 5,  // time delay before displaying the history screen.
+      onComplete : function () {
+        
+          // load history screen.
+          document.querySelector(".selection-screen").classList.add("hide-label");
+          document.querySelector(".history-screen").classList.remove("hide-label");
+          console.log("now we are done. go to history");
+      }
+    })
+  }
 });
 
 //display ball on scoreboard.
