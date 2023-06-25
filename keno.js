@@ -1,8 +1,8 @@
 // ======================== GAME SETTINGS HERE ========================
-const betsTimer = 5 // SET THE BETS-CLOSED TIMER HERE - calculate in seconds, the time to wait before bets close.
+const betsTimer = 5 // Set the BETS-CLOSED timer here - calculate in seconds, the time to wait before bets close.
 
-    //// Define  the lucky balls.
-    const luckyBalls = [15, 22, 2, 24, 12, 66, 77, 48, 33, 49, 50];
+//// Define  the lucky balls.
+const luckyBalls = [15, 22, 2, 78, 69];
 
 
 
@@ -48,21 +48,8 @@ const shuffleLine = gsap.timeline({delay: shuffleWait, paused: true})
   
     //play the video
     video.play();
-    }
+  }
   
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -70,7 +57,7 @@ const shuffleLine = gsap.timeline({delay: shuffleWait, paused: true})
 
   // ======================== FUNCTIONS AND JS BELOW ====================
   
-  // ============================================== Ball Selection
+  // ============================================== Ball Creation
 
 // create and select popup balls elements.
 for (let i = 0; i <= 80; i++ ){
@@ -84,6 +71,18 @@ for (let i = 0; i <= 80; i++ ){
 // get the popupballs and save in balls list.
 const ballElements = document.getElementsByClassName('popupBall');
 const balls = Array.from(ballElements);
+
+//get scoreboardballs and save in scoreboard balls list.
+
+const scoreboard = document.getElementsByClassName('scoreboard-ball');
+const scoreboardBalls = Array.from(scoreboard);
+
+scoreboardBalls.forEach((ball, index) => {
+
+  //mark corresponding scoreboard ball.
+  const ballNumber = (index + 1).toString().padStart(1, '0');
+  ball.setAttribute('data-number', ballNumber);
+});
 
 //Mark each ball with a number attribute.
 balls.forEach((ball, index) => {
@@ -101,61 +100,141 @@ balls.forEach((ball, index) => {
 })
 
 
+
 // =========================== SELECTION TIMELINE =========================
 
-// const selectLine = gsap.timeline({delay: 0, paused: false})
-//     .from(".scoreboard-ball", {opacity: 0}, 1)
-//     .to(".popupBall", {delay: 4, x: 0, y: '-=35vh', scale: 2.2, duration: 1, ease: 'bounce'})
-//     .to(".popupBall", {delay: 4, x: 0, y: '-=75vh', scale: 1, duration: 1, ease: 'ease.inOut'});
-
-// console.log("selection balls loaded");
-
 balls.forEach((ball, index) => {
-  // Calculate the target positions
-  const startPosition = index + 440;
-  const middlePosition = 250;
-  const endPosition = 150;
+
+  // Mark Lucky Balls
+  const ballNumber = parseInt(ball.getAttribute("data-number"));
+
+  if (luckyBalls.includes(ballNumber))
+  {
+    ball.classList.add("luckyBall");
+  }
+
+});
+
+
+// get all the lucked balls.
+const luckedBalls = document.getElementsByClassName("luckyBall");
+const popballs = Array.from(luckedBalls);
+const shufflePopBalls = shuffleArray(popballs); // shuffle the balls
+
+
+//function to shuffle any array
+function shuffleArray(array) {
+  const shuffled = array.slice(); // Create a copy of the original array
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // Generate a random index
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+  }
+  return shuffled;
+}
+
+// start the scoreboard animation on the shuffled popball array.
+
+shufflePopBalls.forEach((ball, index) => {
 
   const tl = gsap.timeline();
   // Add animations to the timeline
-  tl.delay(1 + index*5)
-  
+  tl.delay(1 + index * 5);  // the number here is the pause between each ball's animation.
+
   tl.to(ball, {
-      delay: 1,
-      x: 0,
-      y: '-65vh',
-      duration: 0.1,
-      onComplete: function() {
-      updateScoreboard(ball);
-      playSound();
-      
-      }
+    delay: 1,
+    x: 0,
+    y: '-65vh',
+    duration: 0.1
   })
-      .to(ball, {
+    .to(ball, {
       scale: 2.3,
       duration: 0.01,
       ease: 'bounce',
       rotation: gsap.utils.random(0, 360)
-      
-      
-      })
+    })
 
-      .to(ball, {
-          delay: 2.5,
-          scale: 1,
-          duration: 0.5
-          
-      })
+    .to(ball, {
+      delay: 2.5,
+      scale: 1,
+      duration: 0.5
+    })
 
-      .to(ball, {
+    .to(ball, {
       x: 0,
       y: '-150vh',
-      duration: 0.5
-      });
+      duration: 0.5,
+      onComplete: function() {
+        pushToBoard(ball);
+        playSound();
+        }
+    });
 
+});
+
+//display ball on scoreboard.
+
+//initiate heads and tails variables outside function so that the values are updated on each iteration of the function.
+var heads = 0;
+var tails = 0;
+
+function pushToBoard (ball){
+
+  //get the ball data-number attribute.
+  const scoreNumber = parseInt (ball.getAttribute("data-number")) - 1;
+
+  //identify the ball number on the scoreboard
+  const scoreboardBall = scoreboardBalls[scoreNumber];
+
+  //get heads or tails tags.
+  const headsLabels = document.getElementsByClassName('heads-label');
+  const tailsLabels = document.getElementsByClassName('tails-label');
+  const evensLabels = document.getElementsByClassName('evens-label');
+
+
+  // animate the respective scoreboard number.
+  if (scoreNumber < 40 ) {
+    scoreboardBall.classList.add("active-yellow");
+    gsap.from(scoreboardBall, {scale: 1.8, duration: 0.3, ease: 'elastic'});
+    heads += 1;
+  } else {
+    scoreboardBall.classList.add("active-orange");
+    tails += 1;
+  }
+
+  // Check the counts and show the corresponding labels
+  if (heads > tails) {
+    // Show the heads labels
+    for (let i = 0; i < 2; i++) {
+      headsLabels[i].classList.remove('hide-label');
+      tailsLabels[i].classList.add('hide-label');
+      evensLabels[i].classList.add('hide-label');
+    }
+  } else if (tails > heads) {
+    // Show the tails labels
+    for (let i = 0; i < 2; i++) {
+      tailsLabels[i].classList.remove('hide-label');
+      evensLabels[i].classList.add('hide-label');
+      headsLabels[i].classList.add('hide-label');
+    }
+  } else {
+    // Show the evens labels
+    for (let i = 0; i < 2; i++) {
+      evensLabels[i].classList.remove('hide-label');
+      headsLabels[i].classList.add('hide-label');
+      tailsLabels[i].classList.add('hide-label');
+    }
+  }
+
+  console.log("ball pushed to board!");
+};
+
+
+function playSound() {
+  const audio = document.getElementById("sound");
+  audio.play().catch(error => {
+    console.log("Failed to play audio:", error);
   });
-
-
+};
 
   // ===============================================Countdown Timer.
 
