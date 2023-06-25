@@ -503,11 +503,20 @@ img.keno-selection-top {
 
 img#balls-out, #balls-out-B {
     position: fixed;
-    top: -1vh;
     max-height: 100vh;
-    min-height: 116vh;
-    right: -0.5vw;
+    min-height: 100vh;
     width: 38vw;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.popMachine {
+    position: fixed;
+    top: -1vh;
+    max-width: 20vw;
+    position: fixed;
+    right: -0.5vw;
 }
 
 #balls-out {

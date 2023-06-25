@@ -2,7 +2,7 @@
 const betsTimer = 1; // Set the BETS-CLOSED timer here - calculate in seconds, the time to wait before bets close.
 
 //// Define  the lucky balls.
-const luckyBalls = [15, 22, 2, 78, 69,1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 12, 14, 15, 16];
+const luckyBalls = [15, 22, 42, 78, 69,1, 63, 72, 14, 15, 16];
 
 //========================= TIMER TIMELINE =============================
 const timerLine = gsap
