@@ -18,8 +18,8 @@ Array.from(drawCode).forEach(function(place) {
 function generateRandomBalls() {
   var randomNumbers = [];
 
-  while (randomNumbers.length < 20) {
-    var randomNumber = Math.floor(Math.random() * 80) + 1;
+  while (randomNumbers.length < 10) {
+    var randomNumber = Math.floor(Math.random() * 15) + 1;
 
     // Check if the generated number already exists in the array
     if (!randomNumbers.includes(randomNumber)) {
@@ -269,7 +269,7 @@ balls.forEach((ball, index) => {
 
   if (luckyBalls.includes(ballNumber)) {
     ball.classList.add("luckyBall");
-    ball.innerHTML = ballNumber;
+    // ball.innerHTML = ballNumber;
     ball.style.textAlign = "center";
   }
 });
