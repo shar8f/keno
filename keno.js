@@ -1,14 +1,41 @@
 // ======================== GAME SETTINGS HERE ========================
 const betsTimer = 1; // Set the BETS-CLOSED timer here - calculate in seconds, the time to wait before bets close.
 
-//// Define  the lucky balls.
-const luckyBalls = [
-  1, 2, 45, 66, 50, 3, 5, 8, 7, 12, 14, 15, 11, 80, 70, 60, 50, 40, 30, 71
-];
 
-// Provide Draw ID.
+// Provide Draw ID by getting previous drawid from localstorage and adding 1 to it.
+var drawId = (parseInt(localStorage.getItem('lastGameId')) || 5000) + 1;
 
-var drawId = 52304;
+//input the drawID in each draw number label on the screen.
+var drawCode = document.getElementsByClassName('draw-code');
+Array.from(drawCode).forEach(function(place) {
+  place.innerHTML = drawId;
+});
+
+
+// Define  the lucky balls.
+
+// Temporary function to generate luckyballs randomly. you can change this. 
+function generateRandomBalls() {
+  var randomNumbers = [];
+
+  while (randomNumbers.length < 20) {
+    var randomNumber = Math.floor(Math.random() * 80) + 1;
+
+    // Check if the generated number already exists in the array
+    if (!randomNumbers.includes(randomNumber)) {
+      randomNumbers.push(randomNumber);
+    }
+  }
+
+  return randomNumbers;
+}
+
+const luckyBalls = generateRandomBalls();
+
+// function to save the game results to local storage.
+saveGameResult(drawId, luckyBalls);
+
+
 
 //========================= TIMER TIMELINE =============================
 const timerLine = gsap
@@ -75,42 +102,124 @@ function playVideo() {
 
 // ======================== FUNCTIONS AND JS BELOW ====================
 
+// ========================= HISTORY STORAGE ==========================
+//save the game results in the localstorage.
+
+function saveGameResult(gameId, luckyBalls) {
+  var gameHistory = JSON.parse(localStorage.getItem('gameHistory')) || [];
+  gameHistory.push({ gameId: drawId, result: luckyBalls });
+  localStorage.setItem('gameHistory', JSON.stringify(gameHistory));
+  // Set the lastGameId based on the newly generated gameId
+  localStorage.setItem('lastGameId', gameId)
+}
+
+
+
 // ======================== HISTORY SCREEN ===========================
+// display last game results from local storage.
+function displayGameHistory() {
+  var gameHistory = JSON.parse(localStorage.getItem('gameHistory')) || [];
+  var historyTable = document.getElementById('history-table');
+  
+  // Clear previous content in historyTable
+  historyTable.innerHTML = '';
 
-const history = document.getElementById("history-table");
-const gameId = document.createElement("div");
+  // Retrieve the last 10 game results from the gameHistory array
+  var lastTenGames = gameHistory.slice(-10).reverse();
 
-//create html for game id.
-const drawTitle = document.createElement("span");
-// drawTitle.innerHTML = "DRAW";
-gameId.innerHTML = drawId;
-gameId.classList.add("game-id");
+  // Iterate over the lastTenGames array and add each drawId and result pair to historyTable
+  lastTenGames.forEach(function(game) {
+    var drawId = game.gameId;
+    var historyBalls = game.result;
+    const numbers = historyBalls.sort((a, b) => a - b);
 
-//create a history row for current draw.
-const historyRow = document.createElement("div");
-historyRow.setAttribute("draw-number", drawId);
-historyRow.classList.add("history-set");
-history.appendChild(historyRow);
+    // Create the container div for each game
+    var gameDiv = document.createElement('div');
+    gameDiv.className = 'history-set';
+    gameDiv.setAttribute('draw-number', drawId);
+
+    // Create the game ID div and append it to the gameDiv
+    var gameIdDiv = document.createElement('div');
+    gameIdDiv.className = 'game-id';
+    gameIdDiv.textContent = drawId;
+    gameDiv.appendChild(gameIdDiv);
+
+    // Create the record numbers div and append it to the gameDiv
+    var recordNumbersDiv = document.createElement('div');
+    recordNumbersDiv.className = 'record-numbers';
 
 
-// historyRow.appendChild(drawTitle);
-historyRow.appendChild(gameId);
+    numbers.forEach(function(number) {
+      var numberBorder = document.createElement('div');
+      numberBorder.className = 'number-border';
 
-const sortedBalls = luckyBalls.sort((a, b) => a - b);
+      var numberDiv = document.createElement('div');
+      numberDiv.className = 'record-number';
+      numberDiv.textContent = number;
 
-console.log(sortedBalls);
+      // Attach ball colors based on ball number
+      if (parseInt(number) > 40) {
+        numberDiv.classList.add("orange-ball");
+      } else {
+        numberDiv.classList.add("yellow-ball");
+      }
+      numberBorder.appendChild(numberDiv);
+      recordNumbersDiv.appendChild(numberBorder);
+    });
 
-sortedBalls.forEach((ball, index) => {
-  const record = document.createElement("div");
-  record.classList.add("record-number");
-  record.innerHTML = sortedBalls[index];
-  historyRow.appendChild(record);
-  if (luckyBalls[index] > 40){
-    record.classList.add("orange-ball");
-  } else{
-    record.classList.add("yellow-ball");
-  }
-});
+    gameDiv.appendChild(recordNumbersDiv);
+
+     
+    // indicate the middle in the list of luckyballs for each game.
+
+    // Get the number of records or balls
+    var numBalls = recordNumbersDiv.children.length;
+
+    // Calculate the index of the middle div
+    var middleIndex = Math.floor((numBalls - 1) / 2);
+
+    // Get the middle child element
+    var middleBall = recordNumbersDiv.children[middleIndex];
+
+    // Add styles to the middle child element
+    middleBall.style.borderRight = "1px solid #fff";
+    middleBall.style.paddingright = "10px";
+    console.log(middleBall);
+
+    // Append the gameDiv to the historyTable
+    historyTable.appendChild(gameDiv);
+  });
+
+}
+
+
+// Call the function to display the game history
+displayGameHistory();
+
+
+
+//--------------------------------------------------------------
+
+// const history = document.getElementById("history-table");
+// const gameId = document.createElement("div");
+
+// //create html for game id.
+// const drawTitle = document.createElement("span");
+// // drawTitle.innerHTML = "DRAW";
+// gameId.innerHTML = drawId;
+// gameId.classList.add("game-id");
+
+// //create a history row for current draw.
+// const historyRow = document.createElement("div");
+// historyRow.setAttribute("draw-number", drawId);
+// historyRow.classList.add("history-set");
+// history.appendChild(historyRow);
+
+
+// // historyRow.appendChild(drawTitle);
+// historyRow.appendChild(gameId);
+
+
 
 // ============================================== Ball Creation
 
