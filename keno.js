@@ -64,7 +64,7 @@ function generateRandomBalls() {
   var randomNumbers = [];
 
   while (randomNumbers.length < 20) {
-    var randomNumber = Math.floor(Math.random() * 40) + 1;
+    var randomNumber = Math.floor(Math.random() * 80) + 1;
 
     // Check if the generated number already exists in the array
     if (!randomNumbers.includes(randomNumber)) {
