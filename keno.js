@@ -1,3 +1,48 @@
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var fullscreenPrompt = document.getElementById("fullscreen-prompt");
+      var fullscreenButton = document.getElementById("fullscreen-button");
+
+      function showPrompt() {
+        fullscreenPrompt.style.display = "block"; // Show the fullscreen prompt
+      }
+
+      function hidePrompt() {
+        fullscreenPrompt.style.display = "none"; // Hide the fullscreen prompt
+      }
+
+      // Check if browser is not in fullscreen mode and show prompt
+      if (!document.fullscreenElement && !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement && !document.msFullscreenElement) {
+        showPrompt();
+      }
+
+      // Request fullscreen when the button is clicked
+      fullscreenButton.addEventListener("click", function() {
+        var element = document.documentElement; // Fullscreen the whole document
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+        hidePrompt(); // Hide the fullscreen prompt
+      });
+
+      // Listen for fullscreenchange event to show/hide prompt
+      document.addEventListener("fullscreenchange", function() {
+        if (!document.fullscreenElement && !document.mozFullScreenElement &&
+            !document.webkitFullscreenElement && !document.msFullscreenElement) {
+          showPrompt();
+        } else {
+          hidePrompt();
+        }
+      });
+    });
+
 // ======================== GAME SETTINGS HERE ========================
 const betsTimer = 1; // Set the BETS-CLOSED timer here - calculate in seconds, the time to wait before bets close.
 

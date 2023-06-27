@@ -47,7 +47,7 @@
 <body>
     <div id="optimal-view"> Game cannot be displayed in portrait mode. Please rotate your device to landscape orientation for optimal viewing experience." </div>
     <div class="kentainer" id="main-div">
-      <button onclick="openFullscreen();" id="fullscreen-div">Game must run in Fullscreen.
+      <button onclick="openFullscreen();" id="fullscreen-prompt">Game must run in Fullscreen.
         click to go to <span id="fullscreen-button"> Fullscreen Mode</span></button>
 
         <div class="timer-screen" >
@@ -564,27 +564,6 @@
     <audio id="sound">
         <source src="sounds/PoolHitBallPocket PE982308.mp3" type="audio/mp3">
       </audio>
- <!-- display game in fullscreen. -->
-      <script>
-        var elem = document.getElementById("main-div");
-        function openFullscreen() {
-          if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-            const fullscreenBtn = document.getElementById("fullscreen-div");
-            fullscreenBtn.style.display = "none";
-          } else if (elem.webkitRequestFullscreen) { /* Safari */
-            elem.webkitRequestFullscreen();
-            const fullscreenBtn = document.getElementById("fullscreen-div");
-            fullscreenBtn.style.display = "none";
-          } else if (elem.msRequestFullscreen) { /* IE11 */
-            elem.msRequestFullscreen();
-            const fullscreenBtn = document.getElementById("fullscreen-div");
-            fullscreenBtn.style.display = "none";
-          }else {
-            const fullscreenBtn = document.getElementById("fullscreen-div");
-            fullscreenBtn.style.display = "none";
-          }
-        }
-        </script>
+
 </body>
 </html>

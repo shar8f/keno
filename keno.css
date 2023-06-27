@@ -5,7 +5,8 @@ button {
     height: 40%;
     background: #000000a6;
     color: white;
-    font-size: calc(3vh + 3vw);
+    font-size: calc(2vh + 2vw);
+    margin-bottom: 2vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -13,10 +14,12 @@ button {
     border: 1px solid white;
 }
 
+
+
 span#fullscreen-button {
     background: red;
     padding: 5px;
-    /* margin-top: 10px; */
+    margin-top: 2vh;
     display: block;
     width: 200px;
     margin: auto;
@@ -44,12 +47,13 @@ span#fullscreen-button {
     background: black;
     color: white;
     font-size: calc(2vh + 2vw);
-    padding: 20px;
+    padding: 4vh;
     text-align: left;
     vertical-align: middle;
     position: fixed;
     top: 50%;
-    translate: -0% -50%;
+    transform: translate(-0%, -50%);
+    box-sizing: border-box;
 }
 
 
