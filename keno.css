@@ -5,7 +5,7 @@ button {
     height: 40%;
     background: #000000a6;
     color: white;
-    font-size: 30px;
+    font-size: calc(3vh + 3vw);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -26,6 +26,31 @@ span#fullscreen-button {
     cursor: pointer;
 }
 
+@media (orientation: portrait) {
+    #main-div {
+      display: none;
+    }
+  }
+  
+  @media (orientation: landscape) {
+    #optimal-view {
+      display:none;
+    }
+  }
+
+  div#optimal-view {
+    width: 100vw;
+    height: 20vh;
+    background: black;
+    color: white;
+    font-size: calc(2vh + 2vw);
+    padding: 20px;
+    text-align: left;
+    vertical-align: middle;
+    position: fixed;
+    top: 50%;
+    translate: -0% -50%;
+}
 
 
 /*===================== COLOR VARS =======================*/
