@@ -363,7 +363,7 @@ shufflePopBalls.forEach((ball, index) => {
     })
 
     .to(ball, {
-      rotation: gsap.utils.random(0, 360),
+      rotation: gsap.utils.random(30, -30),
       ease: "bounce",
       onComplete: function () {
         pushToBoard(ball);
@@ -389,6 +389,7 @@ shufflePopBalls.forEach((ball, index) => {
 
   if (index === shufflePopBalls.length - 1) {
     popLine.to("--", {
+      duration: 2,
       delay: 5, // time delay before displaying the history screen.
       onComplete: function () {
         // load history screen.
@@ -399,8 +400,27 @@ shufflePopBalls.forEach((ball, index) => {
         console.log("now we are done. go to history");
       },
     });
+
+    popLine.to(".more-events",{
+
+    duration: 5,
+    delay: 2,
+    onComplete: function () {
+      // load history screen.
+      document.querySelector(".history-screen").classList.add("hide-label");
+      document
+        .querySelector(".more-events")
+        .classList.remove("hide-label");
+      
+    },
+
+
+
+    })
   }
 });
+
+
 
 //display ball on scoreboard.
 

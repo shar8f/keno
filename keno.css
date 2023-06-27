@@ -5,7 +5,7 @@ button {
     height: 40%;
     background: #000000a6;
     color: white;
-    font-size: calc(2vh + 2vw);
+    font-size: calc(1vh + 2vw);
     margin-bottom: 2vh;
     top: 50%;
     left: 50%;
@@ -21,10 +21,10 @@ span#fullscreen-button {
     padding: 5px;
     margin-top: 2vh;
     display: block;
-    width: 200px;
+    width: 10vw;
     margin: auto;
     border-radius: 5px;
-    font-size: 0.8em;
+    font-size: calc(1vh + 0.5vw);
     font-family: 'eurostile-bold';
     cursor: pointer;
 }
@@ -708,3 +708,27 @@ div#history-table {
 .orange-ball {
   background: var(--act-ball-orange);
 }
+
+
+/*======================================= MORE EVENTS ================================== */
+
+.more-events {
+    background-image: url(images/more-events-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+span#more-events-prompt {
+    position: fixed;
+    width: 100vw;
+    transform: translate(50%, 50%);
+    top: 35%;
+    right: 50%;
+    font-size: calc(2vh + 1.5vw);
+}
+
