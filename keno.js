@@ -35,7 +35,11 @@ const luckyBalls = generateRandomBalls();
 // function to save the game results to local storage.
 saveGameResult(drawId, luckyBalls);
 
+//========================= CHECK SCREEN RESOLUTION ====================
 
+// Fullscreen mode =========================
+
+gsap.from("#fullscreen-button", {duration: 3, scale: 1.2, repeat: -1, ease: "bounce"});
 
 //========================= TIMER TIMELINE =============================
 const timerLine = gsap

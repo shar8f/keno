@@ -8,13 +8,46 @@
 
     <link rel="stylesheet" href="keno.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">
-    <script src="responsivevoice.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" defer></script>
     <script src="keno.js" defer></script>
+
+    <script>
+      function checkAspectRatio() {
+        var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+        var aspectRatio = screenWidth / screenHeight;
+
+        var isLandscape = aspectRatio > 1.5; // Adjust the threshold as needed
+
+        return isLandscape;
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        if (checkAspectRatio()) {
+          // Run your game code here
+          console.log("Game is running on a landscape resolution");
+          // ... Add additional code to initialize the game
+        } else {
+
+          const gamecode = document.getElementById("main-div");
+          gamecode.style.display = "none";
+          alert("Game requires a landscape resolution");
+          // ... Add code to display a message or redirect to a suitable page
+        }
+      });
+    </script>
+
+
+   
+
+
 </head>
 <body>
-    <div class="kentainer">
+  <button onclick="openFullscreen();">Game must run in Fullscreen.
+    click to go to <span id="fullscreen-button"> Fullscreen Mode</span></button>
+    <div class="kentainer" id="main-div">
 
         <div class="timer-screen" >
             <div class="play-section section-A">
@@ -530,5 +563,18 @@
     <audio id="sound">
         <source src="sounds/PoolHitBallPocket PE982308.mp3" type="audio/mp3">
       </audio>
+// display game in fullscreen.
+      <script>
+        var elem = document.getElementById("main-div");
+        function openFullscreen() {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+          }
+        }
+        </script>
 </body>
 </html>
